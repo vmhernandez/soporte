@@ -23,12 +23,20 @@ include "conexion.php";
    echo $resultado;
  }
 
- function agregar_impresora($correo,$dsie,$serie,$marca,$modelo,$tipo,$multifuncional,$lan,$usb,$wireless,$duplex,$color,$tinta){ 
+ function agregar_impresora(){ 
     $correo= $_POST['correo'];
     $dsie= $_POST['dsie'];
     $serie= $_POST['serie'];
     $marca= $_POST['marca'];
     $modelo = $_POST['modelo'];
+    $tipo= $_POST['tipo'];
+    $multifuncional= $_POST['multifuncional'];
+    $lan= $_POST['lan'];
+    $usb= $_POST['usb'];
+    $wireless= $_POST['wireless'];
+    $duplex= $_POST['duplex'];
+    $color= $_POST['color'];
+    $tinta= $_POST['tinta'];
     $conn=conectar();
     $sql="INSERT INTO `impresora`(`CORREO`, `DSIE`, `SERIE`, `MARCA`, `MODELO`, `TIPO`, `MULTIFUNCIONAL`, `LAN`, `USB`, `WIRELESS`, `DUPLEX`, `COLOR`, `TINTA`) VALUES ('".$correo."','".$dsie."','".$serie."','".$marca."','".$modelo."','".$tipo."','".$multifuncional."','".$lan."','".$usb."','".$wireless."','".$duplex."','".$color."','".$tinta."')";
     $result = $conn->query($sql);
