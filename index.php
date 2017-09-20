@@ -11,6 +11,10 @@
 
   <body>
    <h1>Sistema</h1>
+   <a href="ejemplo.html">Ejemplo Ajax</a><br>
+   <a href="ejemplo2.html">Ejemplo Ajax 2</a><br>
+   <a href="ejemplo3.html">Ejemplo Ajax 3</a><br>
+   <a href="ejemplo4.html">Ejemplo Ajax 4</a><br>
     <?php
           test();
         ?>

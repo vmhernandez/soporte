@@ -1,0 +1,96 @@
+<html>
+
+<head>
+
+  <title>Ingreso Computador</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+
+  <script>
+    function realizaProceso(correo, dsie, serie, marca, modelo, procesador, hdd, ram, so) {
+  /*    funcion, */
+      var parametros = {
+        "funcion": 'addpc',
+        "correo": correo,
+        "dsie": dsie,
+        "serie": serie,
+        "marca": marca,
+        "modelo": modelo,
+        "procesador": procesador,
+        "hdd": hdd,
+        "ram": ram,
+        "so": so,
+      };
+      $.ajax({
+        data: parametros,
+        url: "php/ajax.php",
+        type: 'post',
+        beforeSend: function() {
+          $("#resultado").html("Procesando, espere por favor...");
+        },
+        success: function(response) {
+          $("#resultado").html(response);
+        }
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6">
+      <div class="form-inline">
+     <!--   <div clas="form-group col-sm-12">
+          <input class="col-sm-12 fom-control" type="text" name="caja_texto" id="funcion" value="addpc" />
+        </div>-->
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">Correo</h3>
+          <input type="text" class="col-sm-6 form-control" name="caja_texto" id="correo" value="" placeholder="Correo" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">DSIE</h3>
+          <input type="text" class="col-sm-6 form-control" name="caja_texto" id="dsie" value="" placeholder="DSIE" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">Serie</h3>
+          <input type="text" class="col-sm-6 form-control" name="caja_texto" id="serie" value="" placeholder="Serie" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">Marca</h3>
+          <input type="text" class="col-sm-6 form-control" name="caja_texto" id="marca" value="" placeholder="Marca" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">Modelo</h3>
+          <input type="text" class="col-sm-6 form-control" name="caja_texto" id="modelo" value="" placeholder="Modelo" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">Procesador</h3>
+          <input type="text" class="col-sm-6 form-control" name="caja_texto" id="procesador" value="" placeholder="Procesador" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">HDD</h3>
+          <input type="number" class="col-sm-6 form-control" name="caja_texto" id="hdd" value="" placeholder="HDD" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">RAM</h3>
+          <input type="number" class="col-sm-6 form-control" name="caja_texto" id="ram" value="" placeholder="RAM" />
+        </div>
+        <div class="form-group col-sm-12">
+          <h3 class="col-sm-6">Sistema Operativo</h3>
+          <input type="text" class="col-sm-6 form-control" name="caja_texto" id="so" value="" placeholder="Sistema Operativo" />
+        </div>
+        <div class="form-group col-sm-12"><input type="button" class="btn-primary" href="javascript:;" onclick="realizaProceso($('#correo').val(),$('#dsie').val(),$('#serie').val(),$('#marca').val(),$('#modelo').val(),$('#procesador').val(),$('#hdd').val(),$('#ram').val(),$('#so').val());return false;" value="Agrega" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-12">
+    Resultado: <span id="resultado">0</span>
+  </div>
+</body>
+
+</html>

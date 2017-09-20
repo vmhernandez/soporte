@@ -1,0 +1,49 @@
+<html>
+ 
+<head>
+ 
+<title>Ejemplo sencillo de AJAX 4</title>
+ 
+<script type="text/javascript" src="js/jquery.js"></script>
+ 
+<script>
+function realizaProceso(funcion,correo,nombre){
+        
+      var parametros = {
+                "funcion": funcion,
+                "correo" : correo,
+                "nombre": nombre,
+        };
+        $.ajax({
+                data:  parametros,
+                url:   "php/ejemplo_ajax3.php",
+                type:  'post',
+                beforeSend: function () {
+                        $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        $("#resultado").html(response);
+                }
+        });
+}
+</script>
+ 
+</head>
+ 
+<body>
+  
+<input type="text" name="caja_texto" id="funcion" value="addpc"/> 
+
+<input type="text" name="caja_texto" id="correo" value="bluexmorningx@hotmail.com"/> 
+
+<input type="text" name="caja_texto" id="nombre" value="victor"/>
+
+<input type="button" href="javascript:;" onclick="realizaProceso($('#funcion').val(),$('#correo').val(),$('#nombre').val());return false;" value="Agrega"/>
+ 
+<br/>
+ 
+Resultado: <span id="resultado">0</span>
+ 
+</body>
+ 
+</html>
